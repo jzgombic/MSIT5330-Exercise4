@@ -1,27 +1,24 @@
 podTemplate(containers: [
-  containerTemplate(
-      name: 'maven', 
-      image: 'maven:latest', 
-      command: 'sleep', 
-      args: '30d'
-      )
-  ], 
+    containerTemplate(
+        name: 'maven',
+        image: 'maven:3.8.1-jdk-8',
+        command: 'sleep',
+        args: '30d'
+        ),
+  ]) {
   
-  volumes: [
-  persistentVolumeClaim(
-      mountPath: '/root/.m2/repository', 
-      claimName: 'maven-repo-storage', 
-      readOnly: false
-      )
-  ]) 
-
-{
-  node(kube-agent) {
-    stage('Build Petclinic Java App') {
-      git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
-      container('maven') {
-        sh 'mvn -B -ntp clean package -DskipTests'
-      }
+    node(kube-agent) {
+        stage('Get a Maven project') {
+            git
+'https://github.com/dlambrig/simple-java-maven-app.git'
+            container('maven') {
+                stage('Build a Maven project') {
+                    sh '''
+                    echo "maven build"
+                    mvn -B -DskipTests clean package
+                    '''
+                    }
+            }
+        }
     }
-  }
 }
