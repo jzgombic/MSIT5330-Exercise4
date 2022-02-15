@@ -16,7 +16,7 @@ podTemplate(containers: [
   ]) 
 
 {
-  node(POD_LABEL) {
+  node(kube-agent) {
     stage('Build Petclinic Java App') {
       git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
       container('maven') {
