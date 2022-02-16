@@ -7,7 +7,7 @@ podTemplate(containers: [
         ),
 ]) {
     
-    node('jenkins') {
+    node('agent') {
         stage('Build a Maven Project') {
             git 'https://github.com/dlambrig/simple-java-maven-app.git'
             sh '''
