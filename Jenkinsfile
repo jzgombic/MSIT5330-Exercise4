@@ -11,7 +11,7 @@ podTemplate(containers: [
         stage('Build a Maven Project') {
             git 'https://github.com/dlambrig/simple-java-maven-app.git'
             sh '''
-            echo 'Maven Build'
+            echo "Maven Build"
             mvn -B -DskipTests clean package
             '''   
         }   
