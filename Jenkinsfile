@@ -5,7 +5,7 @@ podTemplate(containers: [
         )
   ]) {
 
-        node(kubeagent) {
+        node('kubeagent') {
             stages {
                 stage('Build a Maven Project') {
                     steps {
