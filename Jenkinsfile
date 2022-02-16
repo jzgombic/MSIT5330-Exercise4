@@ -17,13 +17,11 @@ podTemplate(containers: [
   
     node('kubeagent') {
         stage('Get a Maven project') {
-            git
-            'https://github.com/dlambrig/simple-java-maven-app.git'
+            git 'https://github.com/spring-projects/spring-petclinic.git'
             container('jnlp') {
-                steps('Build a Maven project') {
+                stage('Build a Maven project') {
                       sh '''
                       echo "Maven build"
-                      mvn -B -DskipTests clean package
                       '''
                 }
             }
