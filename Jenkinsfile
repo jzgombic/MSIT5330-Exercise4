@@ -1,5 +1,5 @@
 podTemplate {
-    node(POD_LABEL) {
+    node('kube-agent') {
         stage('Run shell') {
             sh 'echo hello world'
         }
