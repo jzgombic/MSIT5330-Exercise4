@@ -10,7 +10,6 @@ podTemplate(containers: [
                 git 'https://github.com/dlambrig/simple-java-maven-app.git'
                 sh '''
                 echo 'Maven Build'
-                mvn -B -DskipTests clean package
                 '''   
             }   
         }       
