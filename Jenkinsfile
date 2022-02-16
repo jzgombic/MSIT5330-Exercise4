@@ -20,7 +20,7 @@ podTemplate(containers: [
             git
             'https://github.com/dlambrig/simple-java-maven-app.git'
             container('jnlp') {
-                stage('Build a Maven project') {
+                steps('Build a Maven project') {
                       sh '''
                       echo "Maven build"
                       mvn -B -DskipTests clean package
