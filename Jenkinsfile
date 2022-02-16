@@ -10,7 +10,10 @@ podTemplate(containers: [
     node('kubeagent') {
         stage('Build a Maven Project') {
             git 'https://github.com/dlambrig/simple-java-maven-app.git'
-            sh 'echo "Maven Build"' 
+            sh '''
+            echo "maven build"
+            mvn -B -DskipTests clean package
+            ''' 
         }   
     }
 }
