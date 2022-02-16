@@ -3,7 +3,7 @@ podTemplate(containers: [
     containerTemplate(name: 'golang', image: 'golang:1.8.0', ttyEnabled: true, command: 'cat')
   ]) {
 
-    node('kubeagent') {
+    node(kubeagent) {
         stage('Get a Maven project') {
             git 'https://github.com/jenkinsci/kubernetes-plugin.git'
             container('maven') {
