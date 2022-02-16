@@ -6,6 +6,7 @@ pipeline {
             stage('Build a Maven Project') {
                 sh '''
                 echo 'Maven Build'
+                '''
             }
         }
     }
