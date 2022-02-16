@@ -1,16 +1,14 @@
 podTemplate(containers: [
     containerTemplate(
-        name: 'maven',
-        image: 'maven:3.8.1-jdk-8',
-        command: 'sleep',
-        args: '30d'
+        name: 'jnlp',
+        image: 'jenkins/inbound-agent:4.3-4',
         )
   ],
     
   volumes: [
   persistentVolumeClaim(
       mountPath: '/root/.m2/repository', 
-      claimName: 'maven-repo-storage', 
+      claimName: 'jenkins-pv-claim', 
       readOnly: false
       )
   ]) 
@@ -18,16 +16,14 @@ podTemplate(containers: [
 {
   
     node(POD_LABEL) {
-        stage('Get a Maven project') {
-            git
-'https://github.com/dlambrig/simple-java-maven-app.git'
-            container('maven') {
-                stage('Build a Maven project') {
-                    sh '''
-                    echo "maven build"
-                    mvn -B -DskipTests clean package
-                    '''
+        pipeline {
+            agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+            stages {
+                stage('build') {
+                    steps {
+                        sh 'mvn --version'
                     }
+                }
             }
         }
     }
