@@ -1,5 +1,5 @@
 podTemplate(containers: [
-    containerTemplate('maven'),
+    containerTemplate(maven),
   ]) {
 
         node('kubeagent') {
