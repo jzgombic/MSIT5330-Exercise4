@@ -5,8 +5,7 @@ podTemplate(containers: [
         )
   ]) {
 
-        node(POD_LABEL) {
-        
+        node(kubeagent) {
             pipeline {
                 agent any
                 stages {
