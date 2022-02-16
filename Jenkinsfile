@@ -1,7 +1,9 @@
 podTemplate(containers: [
     containerTemplate(
-        name: 'jnlp', 
-        image: 'jenkins/inbound-agent:4.3-4'
+        name: 'maven', 
+        image: 'maven:3.8.1-jdk-8'
+        command: 'sleep',
+        args: '30d'
         )
   ]) {
 
