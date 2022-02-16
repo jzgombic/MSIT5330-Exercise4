@@ -16,7 +16,7 @@ podTemplate(containers: [
 {
   
     node(POD_LABEL) {
-        stage(''Get a Maven project') {
+        stage('Get a Maven project') {
               container('jnlp') {
                   stage('Shell Execution') {
                       sh '''
