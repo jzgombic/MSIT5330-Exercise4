@@ -1,5 +1,5 @@
 pipeline {
-    agent kubeagent
+    agent {kubeagent}
     podTemplate(containers: [
         containerTemplate(
             name: 'maven',
