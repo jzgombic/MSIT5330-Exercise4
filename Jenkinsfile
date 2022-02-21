@@ -1,4 +1,4 @@
-pipeline {
+#pipeline {
     agent {label "kubeagent"}
     podTemplate(containers: [
         containerTemplate(
@@ -23,4 +23,4 @@ pipeline {
             }
         }
     }
-}
+#}
