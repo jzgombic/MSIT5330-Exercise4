@@ -1,9 +1,9 @@
 podTemplate(containers: [
   containerTemplate(
       name: 'maven', 
-      image: 'maven:latest', 
+      image: 'maven:3.8.1-jdk-8', 
       command: 'sleep', 
-      args: '99d'
+      args: '30d'
       )
   ], 
   
@@ -18,7 +18,7 @@ podTemplate(containers: [
 {
   node(POD_LABEL) {
     stage('Get a Maven project') {
-      git url: 'https://github.com/dlambrig/simple-java-maven-app.git'
+      git 'https://github.com/dlambrig/simple-java-maven-app.git'
       container('maven') {
         stage('Build a Maven project') {
           sh '''
