@@ -10,11 +10,10 @@ podTemplate(containers: [
   volumes: [
   persistentVolumeClaim(
       mountPath: '/root/.m2/repository', 
-      claimName: 'devops-tools/jenkins-pv-claim', 
+      claimName: 'jenkins-pv-claim', 
       readOnly: false
       )
   ]) 
-
 {
   node(POD_LABEL) {
     stage('Get a Maven project') {
