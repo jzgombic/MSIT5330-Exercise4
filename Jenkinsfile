@@ -6,7 +6,7 @@ podTemplate(containers: [
     args: '30d'
   ),
 ]) {
-  node("kube-agent") {
+  node("kubeagent") {
     stage('Get a Maven project') {
       git 'https://github.com/dlambrig/simple-java-maven-app.git'
       container('maven') {
